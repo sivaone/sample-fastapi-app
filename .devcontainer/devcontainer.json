@@ -12,19 +12,13 @@
     "ghcr.io/devcontainers/features/git:1": {}
   },
   "forwardPorts": [
-    22,
     8000
   ],
   "portsAttributes": {
-    "22": {
-      "label": "SSH",
-      "onAutoForward": "notify"
-    },
     "8000": {
       "label": "FastAPI",
       "onAutoForward": "notify"
     }
   },
-  "remoteUser": "root",
   "postCreateCommand": "python3 --version"
 }

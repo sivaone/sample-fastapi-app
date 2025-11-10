@@ -1,17 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/python:3.12
 
-# Install OpenSSH server and client, enable agent forwarding
-RUN apt-get update && \
-    apt-get install -y openssh-server openssh-client && \
-    mkdir -p /var/run/sshd && \
-    ssh-keygen -A && \
-    echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config && \
-    echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config && \
-    echo 'AllowAgentForwarding yes' >> /etc/ssh/sshd_config && \
-    echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config && \
-    echo 'GatewayPorts no' >> /etc/ssh/sshd_config && \
-    echo 'root:pycharm' | chpasswd
+# Simplified devcontainer image without OpenSSH server
+# The base image already includes Python tooling; no SSH services are installed or started.
 
-EXPOSE 22 8000
-
-CMD ["/usr/sbin/sshd", "-D"]
+# Expose FastAPI port only
+EXPOSE 8000
