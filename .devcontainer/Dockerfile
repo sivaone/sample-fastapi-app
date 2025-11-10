@@ -1,12 +1,15 @@
 FROM mcr.microsoft.com/devcontainers/python:3.12
 
-# Install OpenSSH server
+# Install OpenSSH server and client, enable agent forwarding
 RUN apt-get update && \
-    apt-get install -y openssh-server && \
+    apt-get install -y openssh-server openssh-client && \
     mkdir -p /var/run/sshd && \
     ssh-keygen -A && \
     echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config && \
     echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config && \
+    echo 'AllowAgentForwarding yes' >> /etc/ssh/sshd_config && \
+    echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config && \
+    echo 'GatewayPorts no' >> /etc/ssh/sshd_config && \
     echo 'root:pycharm' | chpasswd
 
 EXPOSE 22 8000
