@@ -9,16 +9,32 @@
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.12"
     },
+    "ghcr.io/devcontainers/features/ssh-agent:1": {
+      "enabled": true
+    },
     "ghcr.io/devcontainers/features/git:1": {}
   },
   "forwardPorts": [
     8000
   ],
+  "mounts": [
+    "source=${env:SSH_AUTH_SOCK},target=/ssh-agent,readonly"
+  ],
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "/ssh-agent"
+  },
   "portsAttributes": {
     "8000": {
       "label": "FastAPI",
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "python3 --version"
+  "postCreateCommand": "python3 --version",
+  "customizations": {
+    "jetbrains": {
+      "settings": {
+        "com.intellij:app:HttpConfigurable.use_proxy_pac": true
+      }
+    }
+  },
 }
