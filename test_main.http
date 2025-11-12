@@ -4,8 +4,13 @@ GET http://127.0.0.1:8000/
 Accept: application/json
 
 ###
-
-GET http://127.0.0.1:8000/hello/User
+GET http://127.0.0.1:8000/hello/Sailor
 Accept: application/json
 
+
 ###
+GET http://127.0.0.1:8000/info
+
+
+###
+GET http://127.0.0.1:8000/search?fname=siva&lname=alla
