@@ -1,0 +1,81 @@
+@host = http://localhost:8000
+
+### Root
+GET {{host}}/
+Accept: application/json
+
+###
+### Books Endpoints
+###
+
+### Create a new book
+POST {{host}}/api/v1/books/
+Content-Type: application/json
+
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "isbn": "978-0743273565",
+  "status": "AVAILABLE"
+}
+
+### Get all books
+GET {{host}}/api/v1/books/?skip=0&limit=100
+Accept: application/json
+
+### Get a specific book
+GET {{host}}/api/v1/books/1
+Accept: application/json
+
+### Update a book
+PATCH {{host}}/api/v1/books/1
+Content-Type: application/json
+
+{
+  "status": "RESERVED"
+}
+
+### Delete a book
+DELETE {{host}}/api/v1/books/1
+Accept: application/json
+
+###
+### Users Endpoints
+###
+
+### Create a new user
+POST {{host}}/api/v1/users/
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+
+### Get all users
+GET {{host}}/api/v1/users/?skip=0&limit=100
+Accept: application/json
+
+### Get a specific user
+GET {{host}}/api/v1/users/1
+Accept: application/json
+
+### Delete a user
+DELETE {{host}}/api/v1/users/1
+Accept: application/json
+
+###
+### Library Operations
+###
+
+### Reserve a book
+POST {{host}}/api/v1/library/reserve/1/user/1
+Accept: application/json
+
+### Checkout a book
+POST {{host}}/api/v1/library/checkout/1/user/1
+Accept: application/json
+
+### Return a book
+POST {{host}}/api/v1/library/return/1
+Accept: application/json

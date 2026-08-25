@@ -1,20 +1,11 @@
 {
   "name": "sample-fastapi-app",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
+  "image": "mcr.microsoft.com/devcontainers/python:3.14",
   "overrideCommand": false,
   "features": {
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12"
-    },
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "mounts": [
-    "source=${env:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
-  ],
   "remoteUser": "vscode",
   "forwardPorts": [
     8000
@@ -25,12 +16,5 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "python3 --version",
-  "customizations": {
-    "jetbrains": {
-      "settings": {
-        "com.intellij:app:HttpConfigurable.use_proxy_pac": true
-      }
-    }
-  },
+  "postCreateCommand": "python3 --version"
 }

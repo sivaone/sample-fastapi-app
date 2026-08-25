@@ -34,6 +34,7 @@ htmlcov/
 .idea/
 .vscode/
 *.iml
+.junie/
 
 # OS files
 .DS_Store
@@ -54,3 +55,8 @@ Thumbs.db
 # Python version managers
 .python-version
 
+# local db
+library.db
+
+AGENTS.md
+*PLAN.md
